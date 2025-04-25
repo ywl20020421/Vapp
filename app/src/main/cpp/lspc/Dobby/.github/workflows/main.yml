@@ -1,0 +1,76 @@
+name: CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Mesin Ubuntu untuk menjalankan perintah Debian
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Debian Environment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential  # Sesuaikan kebutuhan Anda
+      
+      # Langkah untuk memulihkan cache
+    
+      # Langkah untuk menyimpan cache
+      - name: LS opt
+        run: |
+          ls ~/opt
+        continue-on-error: true
+        
+      - name: Run script
+        run: |
+          # Sesuaikan perintah ini untuk menjalankan pengujian proyek Anda
+          sh scripts/setup_linux_cross_compile.sh 
+      - name: Run Python
+        run: |
+          python3 scripts/platform_builder.py --platform=android --arch=all --cmake_dir=$HOME/opt/cmake-3.25.2 --llvm_dir=$HOME/opt/llvm-15.0.6 --android_ndk_dir=$HOME/opt/ndk-r25b
+          
+      - name: LS
+        run: |
+          ls
+
+      - name: Tree
+        run: |
+          apt install tree
+        continue-on-error: true
+      - name: run tree
+        run: |
+          tree
+        continue-on-error: true
+        
+      
+    # continue-on-error: true
+      - name: Upload 1
+        uses: actions/upload-artifact@v4
+        with:
+            name: my-artifact
+            path: /build # or path/to/artifact
+        continue-on-error: true
+ 
+      - name: Upload 2
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: build # or path/to/artifact
+        continue-on-error: true
+
+      - name: Tar
+        run: tar -cvf build.tar /build
+        continue-on-error: true
+      - name: Upload 3
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: build.tar
+        continue-on-error: true

@@ -1,0 +1,34 @@
+[versions]
+agp = "8.9.1"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.7.0"
+material = "1.12.0"
+constraintlayout = "2.2.1"
+appcompatV7 = "28.0.0"
+design = "28.0.0"
+constraintLayoutVersion = "2.0.4"
+livedata = "1.1.1"
+viewmodel = "1.1.1"
+navigationFragment = "1.0.0"
+navigationUi = "1.0.0"
+
+[libraries]
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+appcompat-v7 = { group = "com.android.support", name = "appcompat-v7", version.ref = "appcompatV7" }
+design = { group = "com.android.support", name = "design", version.ref = "design" }
+constraint-layout = { group = "com.android.support.constraint", name = "constraint-layout", version.ref = "constraintLayoutVersion" }
+livedata = { group = "android.arch.lifecycle", name = "livedata", version.ref = "livedata" }
+viewmodel = { group = "android.arch.lifecycle", name = "viewmodel", version.ref = "viewmodel" }
+navigation-fragment = { group = "android.arch.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
+navigation-ui = { group = "android.arch.navigation", name = "navigation-ui", version.ref = "navigationUi" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+

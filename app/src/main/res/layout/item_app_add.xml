@@ -1,0 +1,35 @@
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="8dp">
+
+    <!-- 应用图标 -->
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:scaleType="centerCrop" />
+
+    <!-- 应用名称 -->
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="12sp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp" />
+
+    <!-- 安装按钮 -->
+    <Button
+        android:id="@+id/install_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="安装"
+        android:padding="4dp" />
+</LinearLayout>
